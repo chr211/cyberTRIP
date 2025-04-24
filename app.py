@@ -3,12 +3,14 @@ from pymongo import MongoClient
 import csv
 import os
 import sys
+import traceback
 from flask_bcrypt import Bcrypt
 
 from datetime import datetime, timedelta
 import hashlib
 import requests
 import logging
+import hmac
 
 from flask import Flask, jsonify
 from bson import ObjectId
@@ -33,6 +35,9 @@ def login_required(f):
 
 
 app = Flask(__name__)
+from werkzeug.middleware.proxy_fix import ProxyFix
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+
 logging.basicConfig(level=logging.DEBUG)
 '''
 # Load configuration from config.json
@@ -73,7 +78,7 @@ client = MongoClient(mongo_uri)
 
 
 # Session security settings, this keeps info in cookies safe
-app.config['SESSION_COOKIE_SECURE'] = False  # For development only
+app.config['SESSION_COOKIE_SECURE'] = True  # For development only
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['WTF_CSRF_ENABLED'] = True
 # Set the duration for the session data to be stored
@@ -192,7 +197,7 @@ def logout():
 
 
 @app.route("/create-user", methods=["GET", "POST"])
-@login_required
+
 def create_user():
     # if session.get("user_type") != "superuser":
         # return "Access denied", 403
@@ -211,16 +216,25 @@ def create_user():
         username = request.form.get("username")
         password = bcrypt.generate_password_hash(request.form.get("password")).decode('utf-8')
         user_type = request.form.get("user_type")
-        
+        current_time = datetime.now()
+
         #Chris added the passkey verification here when create an initial account.
         entered_passkey = request.form.get("passkey")
         # salt to add to encrypted key
+        
         salt = "ravisethi"
-        correct_passkey_hash = hashlib.sha256(("team7csc436!!!" + salt).encode()).hexdigest()
+        try:
+            raw_passkey = os.environ["CREATE_USER_PASSKEY"]
+        except KeyError:
+            print("Environment variable CREATE_USER_PASSKEY not set. Exiting.")
+            sys.exit(1)
+
+        correct_passkey_hash = hashlib.sha256((raw_passkey + salt).encode()).hexdigest()
+
         
         entered_passkey_hash = hashlib.sha256((entered_passkey + salt).encode()).hexdigest()
 
-        if entered_passkey_hash != correct_passkey_hash:
+        if not hmac.compare_digest(entered_passkey_hash, correct_passkey_hash):
             cooldown_info["failed_attempts"] += 1
             if cooldown_info["failed_attempts"] >= 10:
                 cooldown_info["last_attempt"] = current_time
@@ -436,9 +450,17 @@ def submit_data():
     
       
     try:
-        # -------------------- Changed On November 14th --------------------------------------------
-        latest_ticket = db.tickets.find_one(sort=[("ticket_number", -1)]) # Look for the last ticket number created
-        new_ticket_number = latest_ticket["ticket_number"] + 1 if latest_ticket else 1
+        # -------------------- Changed On dec 2024 --------------------------------------------
+        try:
+            latest_ticket = collection.find_one(sort=[("incident_number", -1)])
+            if latest_ticket and "incident_number" in latest_ticket:
+                new_ticket_number = int(latest_ticket["incident_number"]) + 1
+            else:
+                new_ticket_number = 1
+        except Exception as e:
+            print(f"Error retrieving latest ticket: {e}")
+            new_ticket_number = 1
+
 
         # ------------------------------------------------------------------------------------------
 
@@ -446,16 +468,16 @@ def submit_data():
         # to get number from the form: sanitize_input(request.form["incident_number"])
         data = {
             "incident_number": new_ticket_number,
-            "severity": request.form["severity"],
-            "date": datetime.strptime(request.form["date"], '%Y-%m-%d'),  # validate and convert date
-            "analyst_name": sanitize_input(request.form["analyst_name"]),
-            "incident_type": request.form["incident_type"],
-            "email_address": request.form["email_address"],
-            "subject_line": request.form["subject_line"],
-            "urls": request.form["urls"],
-            "notes": request.form["notes"],
-            "emails_sent": request.form["emails_sent"],
-            "replies": request.form["replies"],
+            "severity": request.form.get("severity"),
+            "date": datetime.strptime(request.form.get("date"), '%Y-%m-%d'),  # validate and convert date
+            "analyst_name": sanitize_input(request.form.get("analyst_name")),
+            "incident_type": request.form.get("incident_type"),
+            "email_address": request.form.get("email_address"),
+            "subject_line": request.form.get("subject_line"),
+            "urls": request.form.get("urls"),
+            "notes": request.form.get("notes"),
+            "emails_sent": request.form.get("emails_sent"),
+            "replies": request.form.get("replies"),
             "tasks": [] 
         }
 
@@ -473,7 +495,7 @@ def submit_data():
     except Exception as e:
         # Log the error (consider using actual logging instead of print for production applications)
         print(f"An error occurred when submitting the form: {e}")
-
+        traceback.print_exc()
         # Give a failure message and stay on the form page (or handle error differently)
         flash('An error occurred. Please try again.', 'error')  # Flask's flash messaging
         return redirect(url_for('index'))  # This would typically redirect back to the form submission page
@@ -589,21 +611,28 @@ def load_from_mongo():
     return redirect(url_for('index'))
 
 
-#When this button is pressed, get all the keys in a list structure and write to csv, then append data in each column
 @app.route("/export-to-csv", methods=["GET"])
 @login_required
 def export_to_csv():
     if "username" not in session:
         return redirect(url_for("login"))
 
-    keys = ["incident_number","severity", "date", "analyst_name", "incident_type", "email_address", "subject_line","urls", "notes", "emails_sent", "replies"]
-    mode = 'a' if os.path.exists("data.csv") else 'w'#if file is there append data, otherwise create a new file
-    with open("data.csv", mode, newline='') as output_file:
-        dict_writer = csv.DictWriter(output_file, keys)#create a dictionary writer to output to csv
-        if mode == 'w':  
+    keys = ["incident_number", "severity", "date", "analyst_name", "incident_type", "email_address", "subject_line", "urls", "notes", "emails_sent", "replies"]
+    
+    # Query all incident documents
+    incidents = collection.find()
+
+    mode = 'a' if os.path.exists("data.csv") else 'w'
+    with open("data.csv", mode, newline='', encoding='utf-8') as output_file:
+        dict_writer = csv.DictWriter(output_file, fieldnames=keys)
+        if mode == 'w':
             dict_writer.writeheader()
-        dict_writer.writerows(data_list)
-    return "Data exported to CSV!", 200#I need error checking
+        for item in incidents:
+            item['date'] = item['date'].strftime('%Y-%m-%d') if isinstance(item['date'], datetime) else item['date']
+            row = {k: item.get(k, '') for k in keys}
+            dict_writer.writerow(row)
+
+    return "Data exported to CSV!", 200
 
 
 #this just clears the bottom of the screen data and reloads
@@ -659,44 +688,45 @@ def urlscan():
         return jsonify({"error": f"Error scanning URL! Response: {response.text}"}), 400
 
 
-    # I might need to add tasks to this
+    # I might need to add tasks to this a different way to search in them
 @app.route("/search-database", methods=["POST"])
 @login_required
 def search_database():
-     try:
+    try:
         query = request.form.get("query")
+        regex_query = {"$regex": query, "$options": "i"}  # Case-insensitive search
 
-        # Search all fields for the query
         results = collection.find({
             "$or": [
-                {"incident_number": {"$regex": query, "$options": "i"}},
-                {"severity": {"$regex": query, "$options": "i"}},
-                {"date": {"$regex": query, "$options": "i"}},
-                {"analyst_name": {"$regex": query, "$options": "i"}},
-                {"incident_type": {"$regex": query, "$options": "i"}},
-                {"email_address": {"$regex": query, "$options": "i"}},
-                {"subject_line": {"$regex": query, "$options": "i"}},
-                {"urls": {"$regex": query, "$options": "i"}},
-                {"notes": {"$regex": query, "$options": "i"}},
-                {"emails_sent": {"$regex": query, "$options": "i"}},
-                {"replies": {"$regex": query, "$options": "i"}}
+                {"incident_number": regex_query},
+                {"severity": regex_query},
+                {"date": regex_query},
+                {"analyst_name": regex_query},
+                {"incident_type": regex_query},
+                {"email_address": regex_query},
+                {"subject_line": regex_query},
+                {"urls": regex_query},
+                {"notes": regex_query},
+                {"emails_sent": regex_query},
+                {"replies": regex_query},
+                {"tasks.task_notes": regex_query},  # Searches inside tasks
+                {"tasks.status": regex_query},
+                {"tasks.priority": regex_query},
+                {"tasks.assigned_to": regex_query}
             ]
         })
-      # Convert each MongoDB document to a dictionary that's JSON serializable
+
         serialized_results = []
         for result in results:
-            # Convert ObjectId to string
-            if '_id' in result:
-                result['_id'] = str(result['_id'])
+            result['_id'] = str(result['_id'])
             serialized_results.append(result)
 
-        return jsonify(serialized_results)  # This line sends a JSON response
-     
-     except Exception as e:  # This block catches all exceptions and returns an error response
-        print(f"An error occurred: {e}")
-        response = jsonify(error=str(e))
-        response.status_code = 500
-        return response
+        return jsonify(serialized_results)
+
+    except Exception as e:
+        print(f"Search error: {e}")
+        return jsonify(error=str(e)), 500
+
 
 
 

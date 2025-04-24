@@ -1,0 +1,17 @@
+#emailsSentStatistic {
+    height: 200px;  /* Same height as the charts for consistency */
+    display: flex;
+    align-items: center;  /* Centers content vertically */
+    justify-content: center;  /* Centers content horizontally */
+    border: 1px solid #ccc;  /* Optional: adds a border for visual consistency with charts */
+    margin-bottom: 20px;  /* Spacing between elements */
+    background-color: #f8f8f8;  /* Background color similar to chart backgrounds */
+    font-size: 1.2em;  /* Adjust font size as needed */
+    border-radius: 5px;  /* Optional: for rounded corners */
+}
+
+
+.chart-container {
+    position: relative;  /* Needed for Chart.js to calculate the size correctly */
+    height: 200px;       /* Set the height here */
+}

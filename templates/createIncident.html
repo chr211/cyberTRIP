@@ -172,7 +172,7 @@
             <td><input type="checkbox" id="recordCheckbox-{{ item._id }}" name="recordSelection" class="recordCheckbox"></td>
             <td>{{ item.incident_number }}</td>
             <td>{{ item.severity }}</td>
-            <td>{{ item.date }}</td>
+            <td>{{ item.date.strftime('%Y-%m-%d') if item.date else '' }}</td>
             <td>{{ item.analyst_name }}</td>
             <td>{{ item.incident_type }}</td>
             <td>{{ item.email_address }}</td>
@@ -418,6 +418,8 @@
                     // Function to create and display a new row in the table
                     createAndDisplayRow(data);
                 } else {
+                    const errorText = await response.text();
+                    alert(`Error: ${errorText}`);
                     throw new Error(`Submission failed with status code: ${response.status}`);
                 }
             } catch (error) {
@@ -427,6 +429,7 @@
         }
 
         function createAndDisplayRow(data) {
+            console.log('Creating and displaying row with data:', data);
             // Get the table where the data will be displayed
             const displayTable = document.getElementById('data-display');
 
