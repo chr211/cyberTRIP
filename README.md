@@ -2,6 +2,7 @@ Fall 2023
 Final Report
 CyberTRIP
 
+
 Introduction
 CyberTRIP, short for Cyber Triage & Response Incident Platform, is a comprehensive web-based
 tool designed to simplify how cybersecurity incidents are tracked, managed, and prioritized in real-time.
