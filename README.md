@@ -28,7 +28,7 @@ evolving landscape of cybersecurity threats.
 
 
 
-Challenges
+## Challenges
 The development of CyberTRIP faced several challenges, especially in making sure the different
 parts of the program, each using distinct technologies, worked well together. Each component needed to
 be carefully created to ensure they functioned smoothly as a unified system with other components. For
@@ -75,7 +75,7 @@ In summary, the challenges were handled well with a combination of existing expe
 MongoDB and JavaScript, and the willingness to learn new technologies like Flask and Jinja. The
 approach took careful planning, trial and error, and clear decision-making to keep things moving.
 
-Highlights
+## Highlights
 The CyberTRIP project has reached significant milestones that emphasize its core purpose and
 functionality. A major achievement of this project is the creation of an efficient and user-friendly
 platform, tailored to simplify the management of cybersecurity incidents. One of the standout features of
@@ -115,9 +115,9 @@ easy to use incident response platform can be created and used for basic workflo
 operations center.
 
 
-Top 4 Significant Project Decisions
+## Top 4 Significant Project Decisions
 
-UI Development and Database Integration (Date: 10-12-2023)
+### UI Development and Database Integration (Date: 10-12-2023)
 
 ●
 Motivation: To create a user-friendly interface for creating and searching incidents.
@@ -126,7 +126,7 @@ Consequences: Achieved a functional UI with essential features like login/logout
 general incident creation and searching by any field .
 
 
-API Integration (Date: 10-27-2023)
+### API Integration (Date: 10-27-2023)
 
 ●
 Motivation: To provide easy clickable access to real-time data from external cybersecurity
@@ -137,7 +137,7 @@ assessments. Urls stored anywhere in an incident can be clicked on to trigger th
 generate a report.
 
 
-Hosting on AWS EC2 (Date completed: 10-26-2023)
+### Hosting on AWS EC2 (Date completed: 10-26-2023)
 
 ●
 Motivation: To improve accessibility and reliability to multiple simultaneous users.
@@ -146,7 +146,7 @@ Consequences: The application became more accessible, enhancing real-world
 applicability. It was also easier to test and use at the same time for developers.
 
 
-Task Management Feature (Date completed: 10-29-2023)
+### Task Management Feature (Date completed: 10-29-2023)
 
 ●
 Motivation: To streamline incident response workflow by adding task information
@@ -155,9 +155,9 @@ associated with an incident.
 Consequences: Improved the organizational aspect of incident management. Tasks can be
 assigned to specific analysts with a todo list and a status attribute.
 
-Requirements
+## Requirements
 
-User Involvement
+## User Involvement
 
 In the development of CyberTRIP, user involvement in the design process was an important
 aspect, ensuring the platform met the specific needs and expectations of its primary users – the Security
@@ -167,13 +167,13 @@ Along with the SOC managers as stakeholders, everyone played an important role i
 trajectory. Interactions with them through feedback sessions and prototype demonstrations were useful in
 refining the platform's functionalities and user interface.
 
-User Needs
+## User Needs
 The primary motivation behind the stakeholders' needs was to create an intuitive, efficient
 platform that not only tracks and stores incident data but also allows for simple and inexpensive access to
 external cybersecurity tools. This helped lead to the creation of specific SMART user stories, detailing
 user needs rather than specific technological implementations.
 
-Top 5 User Stories
+## Top 5 User Stories
 ·
 As a Security Analyst, I want to view results from various external cybersecurity tools within 20
 seconds directly from the dashboard by clicking a link, so that I can make quick decisions and use the
@@ -196,7 +196,7 @@ and accountability with progress tracking in incident management. I should be ab
 the task from a list of at least 4 choices including new, in progress, and completed. I should also be able
 to assign one of 4 priority types to each task.
 
-Problem Definition
+### Problem Definition
 
 Many modern incident response programs are large, messy, and have a steep learning curve.
 Many of them have features that are rarely used which can distract from basic workflows in incident
@@ -299,8 +299,7 @@ development of CyberTRIP was driven by an emphasis on designing with a general p
 mind, continually modified by feedback from stakeholders which helped add and improve features over
 time.
 
-
-3. Significant Project Design Decisions
+### Significant Project Design Decisions
 System Overview
 The system consists of the homepage where users can learn about the site, create accounts and
 login and the dashboard view where users can navigate to pages for creating and viewing details of
@@ -430,19 +429,19 @@ Logout
 
 
 
-Architectural View
+## Architectural View
 
 From the architectural view, the data from Create Incident is saving to the MongoDB. View Statistics
 and View Incidents is correctly retrieving data from MongoDB. The External APIs are correctly
 returning information to the user. Login is allowing the user to View Statistics, Create Incidents,
 View Statistics, and interact with External APIs.
 
-Tests Run
+## Tests Run
 
 All of the Acceptance tests as well as other tests such as multiple users on the website at
 once.
 
-Lines of Code Written
+## Lines of Code Written
 
 1722 lines in html files
 866 lines in css files
