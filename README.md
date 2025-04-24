@@ -54,8 +54,8 @@ by adding a countdown timer and had the results page load in a pop up at the cor
 
 The user interface had a few of its own challenges, particularly in terms of creating a design that
 was both user-friendly and capable of displaying diverse types of information. Prior knowledge of JavaScript and MongoDB was utilized 
-to develop an interface that was simple to interact with. It was found that some technologies like Flask and Jinja were needed. Although we
-all knew Python and basic web programming, learning flask was crucial. It was necessary to learn
+to develop an interface that was simple to interact with. It was found that some technologies like Flask and Jinja were needed. Although
+prior Python and basic web programming was known, learning flask was crucial. It was necessary to learn
 because it’s fundamental tool for automated handling of web sessions, requests, and responses and
 routing them to the Python code so that the correct html templates can be displayed. It was also discovered
 that a tool called Gunicorn to manage web requests on the AWS server was needed.
@@ -201,7 +201,7 @@ Problem Definition
 Many modern incident response programs are large, messy, and have a steep learning curve.
 Many of them have features that are rarely used which can distract from basic workflows in incident
 response. Further, some incident-response platforms try to handle too many tasks and possibilities. There
-are, however, some good ones which were small and efficient, like The Hive for example, which we
+are, however, some good ones which were small and efficient, like The Hive for example, which was
 researched and learned from. The problem CyberTRIP aimed to solve was providing a simple, general
 purpose, and efficient system to benefit cybersecurity incident management for SOC analysts and
 managers. This was achieved through the development of key use cases:
