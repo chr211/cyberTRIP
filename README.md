@@ -21,8 +21,8 @@ all-in-one solution approach, where different types of incident responses can be
 via an integrated dashboard. This ensures that digital assets remain secure while significantly
 streamlining the workflow for addressing cybersecurity incidents. CyberTRIP's design also reflects an
 understanding of the complexity and uniqueness of cybersecurity incident response, which comes from
-one of the team member’s cybersecurity internship experience. In their experience, they found that
-integrated access to a variety of tools in one interface would be desirable. With this platform, we aim to
+my cybersecurity internship experience. In my experience, I found that
+integrated access to a variety of tools in one interface would be desirable. With this platform, the aim is to
 facilitate the most common workflows that not only address basic responses but also adapt to the
 evolving landscape of cybersecurity threats.
 
@@ -30,52 +30,49 @@ evolving landscape of cybersecurity threats.
 
 Challenges
 The development of CyberTRIP faced several challenges, especially in making sure the different
-parts of our program, each using distinct technologies, worked well together. Each component needed to
+parts of the program, each using distinct technologies, worked well together. Each component needed to
 be carefully created to ensure they functioned smoothly as a unified system with other components. For
 example, the Mongo database stored data in BSON format, while other components needed to have the
 data in JSON format. 
 
-Another of the primary challenges faced by our team was ensuring the security and
+Another of the primary challenges faced was ensuring the security and
 privacy of potentially sensitive data. Since this is a web application potentially accessible to people
-outside of the desired user environment, we had to ensure that all the data was transmitted and stored
-securely. This was not just a technical issue, but a requirement, given the nature of our program. To
-address this, our team implemented security measures including encryption at rest using bcrypt to
+outside of the desired user environment, it must be ensured that all the data was transmitted and stored
+securely. This was not just a technical issue, but a requirement, given the nature of the program. To
+address this, security measures were implemented including encryption at rest using bcrypt to
 securely store user passwords and session management using a secret key to prevent session hijacking.
-We also used certificates to encrypt data in transit for https transfer, which protects it against
-eavesdropping. We further implemented the Python cryptography library function to secure the data
-stored in our Mongodb.
+Certificates were used to encrypt data in transit for https transfer, which protects it against
+eavesdropping. The Python cryptography library function was implemented to secure the data
+stored in the Mongodb.
 
 Another significant challenge was the integration of various external APIs, each with its own
-unique format and authentication method. This required a careful and methodical approach, as the team
-strived to create a user-friendly experience. We started with a simple API at first, urlscan, and created a
-way a user could click on any link in the incident notes to trigger the urlscan API. We had a few issues
-with the event listeners and the fact that the API has a built-in wait time for responses. We dealt with this
+unique format and authentication method. This required a careful and methodical approach, as the desire was to create a 
+user-friendly experience. It began with a simple API at first, urlscan, and created a
+way a user could click on any link in the incident notes to trigger the urlscan API. There were a few issues
+with the event listeners and the fact that the API has a built-in wait time for responses. This was dealt with
 by adding a countdown timer and had the results page load in a pop up at the correct time.
 
 The user interface had a few of its own challenges, particularly in terms of creating a design that
-was both user-friendly and capable of displaying diverse types of information. We utilized some of our
-member’s prior knowledge of JavaScript and MongoDB to develop an interface that was simple to
-interact with. Those members primarily dealt with the front-end coding. However, we found we needed
-to use some technologies that none of us were previously familiar with like Flask and Jinja. Although we
+was both user-friendly and capable of displaying diverse types of information. Prior knowledge of JavaScript and MongoDB was utilized 
+to develop an interface that was simple to interact with. It was found that some technologies like Flask and Jinja were needed. Although we
 all knew Python and basic web programming, learning flask was crucial. It was necessary to learn
 because it’s fundamental tool for automated handling of web sessions, requests, and responses and
-routing them to our Python code so that the correct html templates can be displayed. We also discovered
-that we needed to use a tool called Gunicorn to manage web requests on our AWS server.
+routing them to the Python code so that the correct html templates can be displayed. It was also discovered
+that a tool called Gunicorn to manage web requests on the AWS server was needed.
 
 Finally, the decision to make the platform web-based introduced issues related to development
-and testing, especially with a team of four members. Hosting and scalability were additional
-considerations beyond hosting our program on one development machine. The team’s decision to initially
+and testing. Hosting and scalability were additional considerations beyond hosting the program on one development machine. The decision to initially
 host locally and use GitHub for version control was a good approach for initial development, allowing
 for controlled testing and gradual addition of features. As the basics progressed and were found to be
-working as planned, we moved to cloud services. We selected AWS for its ease of setup and scalability,
+working as planned, it was moved to cloud services. AWS was selected for its ease of setup and scalability,
 which makes it easy to demonstrate a proof of concept for a realistic multi-user tool for incident
 response. There were a few problems where the exact same program functioned differently on Ubuntu on
-AWS versus a single windows machine, but they were minor cosmetic issues. We also had to configure
-environment variables within the AWS server for security rather than hard code them in our application.
+AWS versus a single windows machine, but they were minor cosmetic issues. Environment variables were created
+within the AWS server for security rather than hard code them in the application.
 
 
-In summary, we handled the challenges well with a combination of existing experience with
-MongoDB and JavaScript, and the willingness to learn new technologies like Flask and Jinja. Our
+In summary, the challenges were handled well with a combination of existing experience with
+MongoDB and JavaScript, and the willingness to learn new technologies like Flask and Jinja. The
 approach took careful planning, trial and error, and clear decision-making to keep things moving.
 
 Highlights
@@ -109,11 +106,11 @@ timeout, prioritizing the protection of user data and system integrity.
 Throughout its development, CyberTRIP has been shaped by the need for a simple and efficient
 design, influenced by ongoing feedback from stakeholders. This approach ensured that every feature
 implemented was powerful and satisfied the practical needs of users. The iterative Agile development
-process, combined with the team's flexibility in adopting new technologies such as Flask and Jinja, along
-with their experience with MongoDB and JavaScript, was useful in creating a platform that is both
+process, combined with the flexibility in adopting new technologies such as Flask and Jinja, along
+with experience with MongoDB and JavaScript, was useful in creating a platform that is both
 advanced and intuitive.
 
-In conclusion, we think that the development of CyberTRIP shows that a compact, efficient, and
+In conclusion, the development of CyberTRIP shows that a compact, efficient, and
 easy to use incident response platform can be created and used for basic workflows within a security
 operations center.
 
@@ -164,9 +161,9 @@ User Involvement
 
 In the development of CyberTRIP, user involvement in the design process was an important
 aspect, ensuring the platform met the specific needs and expectations of its primary users – the Security
-Operations Center analysts. One of our team members is a junior analyst who routinely uses similar
-software, so this was very helpful when designing the interface and functionality. This team member,
-along with their SOC managers as stakeholders, played an important role in shaping the project’s
+Operations Center analysts. I was a junior analyst who routinely uses similar
+software, so this was very helpful when designing the interface and functionality. 
+Along with the SOC managers as stakeholders, everyone played an important role in shaping the project’s
 trajectory. Interactions with them through feedback sessions and prototype demonstrations were useful in
 refining the platform's functionalities and user interface.
 
@@ -311,16 +308,15 @@ and statistics about incidents. The main challenges of building the system were 
 secure and formatting data in a way that MongoDB would recognize but was still easy to access on
 the frontend.
 
-Our decision to use Flask as a framework and MongoDB as a database were the main decisions
-that shaped how the system was laid out. We chose Flask because some team members had
+The decision to use Flask as a framework and MongoDB as a database were the main decisions
+that shaped how the system was laid out. Flask was chosen because of previous
 experience using it and it is a popular framework that offered longterm support and lots of
-documentation. We chose MongoDB because it is a NoSQL database that allows high customization
+documentation. MongoDB was chosen because it is a NoSQL database that allows high customization
 of record storage. 
 
-A consequence of the decision to use MongDB was that we needed to convert
-some data to json serializable format before we stored it. A positive consequence was that our
-website is not vulnerable to SQL injection because MongoDB is a NoSQL dbms. Our decision to
-separate normal and super users also affected the system because we had to partition data based on
+A consequence of the decision to use MongoDB was that some data needed to be converted to json serializable format before it was stored. A positive consequence was that the
+website is not vulnerable to SQL injection because MongoDB is a NoSQL dbms. The decision to
+separate normal and super users also affected the system because data had to be partitioned based on
 the permissions of the user.
 
 Context Diagram
@@ -358,7 +354,6 @@ created incidents, offering insights into system performance or relevant metrics
 Significant Decisions: Used Chart JS
 
 
-
 4. Create Incident:
 ●
 Responsibility: The Create Incident component facilitates the generation of new incidents,
@@ -390,7 +385,9 @@ Significant Decisions: Stored API key in environment variables for security and
 implemented a timer to match with URL Scan.io’s security timer when making API calls,
 URLs in the notes section of created incidents are automatically submitted to URL Scan
 API.
+
 4. Status
+
 
 Home page
 
@@ -434,13 +431,15 @@ Logout
 
 
 Architectural View
+
 From the architectural view, the data from Create Incident is saving to the MongoDB. View Statistics
 and View Incidents is correctly retrieving data from MongoDB. The External APIs are correctly
 returning information to the user. Login is allowing the user to View Statistics, Create Incidents,
 View Statistics, and interact with External APIs.
 
 Tests Run
-We have run all of our Acceptance tests as well as other tests such as multiple users on the website at
+
+All of the Acceptance tests as well as other tests such as multiple users on the website at
 once.
 
 Lines of Code Written
@@ -451,85 +450,3 @@ Lines of Code Written
 3363 lines total. Possibly closer to 3500 with other files needed to deploy the website in
 production on the EC2 instance.
 
-5. Teamwork
-At the beginning stages of this project we were operating with a very loose process model and
-workflows and essentially just decided on general work items then worked towards completing them for
-a single iteration. However, as we progressed we managed to make significant improvements in our
-workflow and collaboration by formalizing work logs with specific tasks assigned to each member,
-which made working through the project much easier when it came time to debug, test, and integrate our
-code with one another’s. We also continued to meet weekly on Thursdays from 12pm - 1pm where we
-would discuss the work that has been completed, the work in progress, and the tasks that need to be
-completed. We also continued to utilize our GitHub repository as a means of sharing and merging code,
-and a Discord group chat as our primary means of communication.
-
-6. Project Management
-Top 5 Items from the Change Log
-One of our bigger decisions centered around the different user types. Though we ran out of time to
-properly implement the different user types we had planned out, we spent much of our meetings
-discussing how the different user types should work, what the different user types would be,
-permissions, etc. We ended up with three different kinds of users: superuser which had all power and
-permissions in the website, Supervisors which would manage incidents and tasks, and standard users
-which could view their associated incidents and their status.
-
-Another decision was how we would scale the website with the database. We were able to use
-MongoDB locally when testing the website locally and we got it running locally on the website
-server to allow basic functionality for the website. We discussed trying to make MongoDB Atlas
-work with the server so that we would be able to offload the data storage to Mongo instead of a local
-version on the server. However, given time and work constraints, we decided to leave the website
-using the local version instead of attempting to get it to work with Atlas.
-One major event was figuring out the best way to store the API key for the URL Scanner. There
-wasn’t much discussion about what the best way should be but more determine what ways it could be
-done safely. We eventually settled on saving it as an environment variable that would have to be
-stored on the server.
-
-One change we decided to add later in the project was adding tasks to incidents. It seemed intuitive
-and useful so there wasn’t much debate on whether or not we would do it, just what the best way
-would be to add it. We ended up deciding that the Tasks would only be viewable when the associated
-Incident was individually viewed, which required implementing that feature.
-18
-
-Another smaller change that we all agreed on was adding a label displaying what user was logged in.
-It was a simple few lines of code that improved the user experience by allowing the user to confirm
-what account they were logged in as and that they were viewing the correct incidents associated with
-the account.
-
-7. Reflection and Continuous Improvement
-What went well?
-In the first iteration of our project, we were able to create several working prototypes that matched the
-use cases we initially set in the planning stages of the iteration. We also developed several alternative
-frontend GUI interfaces that worked in conjunction with the backend model. Our work process, team
-coordination, and workflow was excellent which led to a working product fairly early. Overall, our
-iteration goals were achieved and our meetings were well organized and documented. In the second
-iteration, some things that went well were that we were able to set up more well defined work items, and
-implement many new features such as a statistics page, creation of case tasks, UI interface uniformity,
-making incidents deletable, and automatically running URL scan for incidents when a link is clicked on
-an incident report. Hosting the website on AWS has been immensely successful, despite a few issues
-which were quickly, and effectively resolved. Since our second status report something significant that
-has gone well is that using the live web application with multiple users on the site at one time was
-successful. Overall, our communication and collaboration throughout the project has gone very smoothly,
-and has been a critical component of our successes.
-What didn’t go well?
-In the first iteration, task definition was not as formally defined as it could have been. We also
-encountered privacy issues with our API key being publicly visible. Additionally, it took more time than
-expected to port our program to the cloud. In the second iteration, there was a delay in development
-because of the time it took to figure out that we had to serialize the data from the MongoDB database in
-order to retrieve said data. Although we were still able to accomplish the goals we had set forth for that
-iteration, we did have less time for other tasks as a result. Additionally, during the second iteration we
-found that unfortunately the API key did not work with env vars.
-It is worth noting that the issues we came across during our first and second iteration were completely
-resolved. On the other hand, we have come across a few more things since our second status report that
-did not go well. First off, we were not able to add more external APIs due to time constraints caused by
-debugging issues while hosting the live web application with AWS. Secondly, we have found that for
-some reason the info cards on the about page work fine on the live AWS version of our application, but
-fail when tested locally. Additionally, we were also unable to implement a supervisor user type like we
-had initially planned due to time constraints.
-What advice do you have for future teams?
-19
-
-Our advice for future teams would be to utilize a visual design tool to help with planning the
-layout/functionality of application in the early stages of development, and to plan more modularly, being
-sure to really think through the interactions between modules and how data is stored across different
-tools. Based on our own experience, we would also recommend thoroughly thinking about what kind of
-security and encryption are necessary for your project before starting rather than after, as it will be much
-harder to implement later in the development process.
-20
