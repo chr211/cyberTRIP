@@ -2,7 +2,7 @@ Fall 2023
 Final Report
 CyberTRIP
 
-1. Introduction
+Introduction
 CyberTRIP, short for Cyber Triage & Response Incident Platform, is a comprehensive web-based
 tool designed to simplify how cybersecurity incidents are tracked, managed, and prioritized in real-time.
 Motivated by the need for an integrated environment in security operations centers, this project was
@@ -72,7 +72,6 @@ response. There were a few problems where the exact same program functioned diff
 AWS versus a single windows machine, but they were minor cosmetic issues. We also had to configure
 environment variables within the AWS server for security rather than hard code them in our application.
 
-2
 
 In summary, we handled the challenges well with a combination of existing experience with
 MongoDB and JavaScript, and the willingness to learn new technologies like Flask and Jinja. Our
@@ -117,7 +116,6 @@ In conclusion, we think that the development of CyberTRIP shows that a compact, 
 easy to use incident response platform can be created and used for basic workflows within a security
 operations center.
 
-3
 
 Top 4 Significant Project Decisions
 
@@ -159,7 +157,7 @@ associated with an incident.
 Consequences: Improved the organizational aspect of incident management. Tasks can be
 assigned to specific analysts with a todo list and a status attribute.
 
-2. Requirements
+Requirements
 
 User Involvement
 
@@ -170,13 +168,13 @@ software, so this was very helpful when designing the interface and functionalit
 along with their SOC managers as stakeholders, played an important role in shaping the project’s
 trajectory. Interactions with them through feedback sessions and prototype demonstrations were useful in
 refining the platform's functionalities and user interface.
-4
 
 User Needs
 The primary motivation behind the stakeholders' needs was to create an intuitive, efficient
 platform that not only tracks and stores incident data but also allows for simple and inexpensive access to
 external cybersecurity tools. This helped lead to the creation of specific SMART user stories, detailing
 user needs rather than specific technological implementations.
+
 Top 5 User Stories
 ·
 As a Security Analyst, I want to view results from various external cybersecurity tools within 20
@@ -210,7 +208,6 @@ researched and learned from. The problem CyberTRIP aimed to solve was providing 
 purpose, and efficient system to benefit cybersecurity incident management for SOC analysts and
 managers. This was achieved through the development of key use cases:
 
-5
 
 Top 3 Use Cases
 
@@ -234,10 +231,10 @@ known threat patterns.
 6.
 Relevant threat information, predictive insights, or statistics based on the entered IoCs are
 displayed to the analyst using local data and external APIs.
-
 7.
-
 The analyst proceeds with formulating response strategies based on the IoCs' analysis results.
+
+
 Alternative Flows:
 "IoC Input Anomalies": The system detects inconsistencies or errors in the entered IoCs, prompting the
 analyst for verification or correction. This could be due to invalid format etc.
@@ -247,8 +244,6 @@ detected by the system.
 requiring system support. This could be a database error or network error for example.
 *Attaches to Basic Flow: This flow comes into play if a system error occurs at Step 5, causing search
 functions to fail.
-
-6
 
 Use Case 2: Enhanced Incident Response with Task Management
 User Goal: Analysts and supervisors coordinate incident response strategies by associating tasks with
@@ -276,8 +271,6 @@ compromising incident response times.
 *Attaches to Basic Flow: This flow becomes relevant if, after Step 4, analysts report or encounter
 unforeseen delays or issues.
 
-7
-
 Use Case 3: Comprehensive Case Review and Statistical Analysis
 User Goal: Users aim to conduct thorough post-incident reviews and generate detailed statistical
 analyses based on saved case data and associated IoCs.
@@ -291,6 +284,7 @@ efficacy, and other relevant factors.
 patterns in threat behavior.
 5. Insights from the analysis are used to update best practices, enhance future response strategies, and
 inform proactive defense mechanisms.
+
 Alternative Flows:
 "Insufficient Data for Analysis": The system identifies gaps in case data, limiting the comprehensiveness
 of statistical reports.
@@ -300,13 +294,13 @@ backing data.
 prompting a review of the data inputs or analysis methodologies.
 *Attaches to Basic Flow: This problem arises at Step 4, where users notice discrepancies or
 questionable data in the reports.
+
 Each use case was developed with the user's role, goals, and the basic workflow in mind. Each
 use case also satisfies the overall objective of enhancing SOC efficiency and effectiveness. The
 development of CyberTRIP was driven by an emphasis on designing with a general purpose SOC in
 mind, continually modified by feedback from stakeholders which helped add and improve features over
 time.
 
-8
 
 3. Significant Project Design Decisions
 System Overview
@@ -329,7 +323,6 @@ separate normal and super users also affected the system because we had to parti
 the permissions of the user.
 
 Context Diagram
-
 
 ![Page 9 Image 1](img/page9_1.jpeg)
 
@@ -397,13 +390,8 @@ implemented a timer to match with URL Scan.io’s security timer when making API
 URLs in the notes section of created incidents are automatically submitted to URL Scan
 API.
 4. Status
-11
 
 Home page
-
-
-
-12
 
 ![Page 12 Image 1](img/page12_1.png)
 Sign Up
@@ -412,9 +400,6 @@ Login functionality
 ![Page 12 Image 3](img/page12_3.png)
 
 
-
-
-13
 Creating an Incident
 ![Page 13 Image 1](img/page13_1.png)
 Url Scan API
@@ -422,9 +407,6 @@ Url Scan API
 Viewing existing incidents
 ![Page 13 Image 3](img/page13_3.png)
 
-
-
-14
 Search Incidents
 ![Page 14 Image 1](img/page14_1.png)
 
@@ -432,13 +414,12 @@ Delete Incidents
 ![Page 14 Image 2](img/page14_2.png)
 
 Add tasks
-
 ![Page 15 Image 1](img/page15_1.png)
+
 Edit Tasks
-
 ![Page 15 Image 2](img/page15_2.png)
-Viewing statistics
 
+Viewing statistics
 ![Page 15 Image 3](img/page15_3.png)
 
 Logout
