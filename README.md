@@ -1,6 +1,7 @@
 ### Fall 2023
 ### Final Report
 ### CyberTRIP
+[Basic Video Demo](https://youtu.be/lwixgNThRQ8)
 [Jump to easy to understand pictoral view](#Context-Diagram)
 
 ## Introduction
@@ -21,10 +22,11 @@ all-in-one solution approach, where different types of incident responses can be
 via an integrated dashboard. This ensures that digital assets remain secure while significantly
 streamlining the workflow for addressing cybersecurity incidents. CyberTRIP's design also reflects an
 understanding of the complexity and uniqueness of cybersecurity incident response, which comes from
-my cybersecurity internship experience. In my experience, I found that
-integrated access to a variety of tools in one interface would be desirable. With this platform, the aim is to
+my cybersecurity internship experience.
+In my experience, I found that integrated access to a variety of tools in one interface would be desirable. With this platform, the aim is to
 facilitate the most common workflows that not only address basic responses but also adapt to the
-evolving landscape of cybersecurity threats.
+evolving landscape of cybersecurity threats. I'd like to thank my inital team members Cooper Harris for the front end design, 
+Logan Kroeger for logistics, and Katelen Tellez for documentation.
 
 
 
