@@ -1,7 +1,7 @@
 ### Fall 2023
 ### Final Report
 ### CyberTRIP
-[Jump to picture description](#Context-Diagram)
+[Jump to easy to understand pictoral view](#Context-Diagram)
 
 ## Introduction
 CyberTRIP, short for Cyber Triage & Response Incident Platform, is a comprehensive web-based
