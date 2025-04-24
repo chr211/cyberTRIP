@@ -25,7 +25,6 @@ integrated access to a variety of tools in one interface would be desirable. Wit
 facilitate the most common workflows that not only address basic responses but also adapt to the
 evolving landscape of cybersecurity threats.
 
-1
 
 
 Challenges
@@ -431,13 +430,12 @@ Delete Incidents
 ![Page 14 Image 2](img/page14_2.png)
 
 Add tasks
-Edit Tasks
-Viewing statistics
-15
-View Individual Incidents
+
 ![Page 15 Image 1](img/page15_1.png)
+Edit Tasks
 
 ![Page 15 Image 2](img/page15_2.png)
+Viewing statistics
 
 ![Page 15 Image 3](img/page15_3.png)
 
@@ -455,7 +453,8 @@ once.
 Lines of Code Written
 
 16
-
+15
+View Individual Incidents
 ![Page 16 Image 1](img/page16_1.png)
 
 ![Page 16 Image 2](img/page16_2.png)
