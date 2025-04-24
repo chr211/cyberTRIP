@@ -1,7 +1,7 @@
 ### Fall 2023
 ### Final Report
 ### CyberTRIP
-[Basic Video Demo](https://youtu.be/lwixgNThRQ8)
+[Basic Video Demo](https://youtu.be/lwixgNThRQ8)<br>
 [Jump to easy to understand pictoral view](#Context-Diagram)
 
 ## Introduction
