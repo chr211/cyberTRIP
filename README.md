@@ -175,23 +175,23 @@ user needs rather than specific technological implementations.
 
 ## Top 5 User Stories
 ·
-As a Security Analyst, I want to view results from various external cybersecurity tools within 20
+1. As a Security Analyst, I want to view results from various external cybersecurity tools within 20
 seconds directly from the dashboard by clicking a link, so that I can make quick decisions and use the
 results efficiently.
 ·
-As a Security Analyst, I need to be able to search for and update incidents in less than three mouse
+2. As a Security Analyst, I need to be able to search for and update incidents in less than three mouse
 clicks through a simple, uncluttered dashboard, so that response times to incidents are significantly
 reduced compared to other incident response-platforms.
 ·
-As an IT Manager, I want the platform to be versatile and able to handle at least 3 different types of
+3. As an IT Manager, I want the platform to be versatile and able to handle at least 3 different types of
 incidents like Phishing, DOS, and Malware using one incident interface so that the data is centralized and
 I do not have to use several different solutions.
 ·
-As a Security Analyst, I require the ability to search for Indicators of Compromise (IoCs) across all
+4. As a Security Analyst, I require the ability to search for Indicators of Compromise (IoCs) across all
 incidents, so that rapid threat identification and response and separate incidents can be correlated. The
 search results should be available within 5 seconds and able to be sorted by field.
 ·
-As a Supervisor, I want to assign tasks within incidents to specific users, ensuring clear action steps
+5. As a Supervisor, I want to assign tasks within incidents to specific users, ensuring clear action steps
 and accountability with progress tracking in incident management. I should be able to select the status of
 the task from a list of at least 4 choices including new, in progress, and completed. I should also be able
 to assign one of 4 priority types to each task.
