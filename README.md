@@ -399,41 +399,42 @@ API.
 11
 
 Home page
-Sign Up
-Login functionality
-Creating an Incident
+
+
+
 12
 
 ![Page 12 Image 1](img/page12_1.png)
-
+Sign Up
 ![Page 12 Image 2](img/page12_2.png)
-
+Login functionality
 ![Page 12 Image 3](img/page12_3.png)
 
-Url Scan API
-Viewing existing incidents
-Search Incidents
+
+
+
 13
-
+Creating an Incident
 ![Page 13 Image 1](img/page13_1.png)
-
+Url Scan API
 ![Page 13 Image 2](img/page13_2.png)
-
+Viewing existing incidents
 ![Page 13 Image 3](img/page13_3.png)
 
-Delete Incidents
-View Individual Incidents
-14
 
+
+14
+Search Incidents
 ![Page 14 Image 1](img/page14_1.png)
 
+Delete Incidents
 ![Page 14 Image 2](img/page14_2.png)
 
 Add tasks
 Edit Tasks
 Viewing statistics
 15
-
+View Individual Incidents
 ![Page 15 Image 1](img/page15_1.png)
 
 ![Page 15 Image 2](img/page15_2.png)
