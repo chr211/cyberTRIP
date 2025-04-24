@@ -329,11 +329,14 @@ separate normal and super users also affected the system because we had to parti
 the permissions of the user.
 
 Context Diagram
-9
+
 
 ![Page 9 Image 1](img/page9_1.jpeg)
 
 Architectural View
+
+![Page 10 Image 1](img/page10_1.jpeg)
+
 The diagram shows the flow of information for a person using the site. They will first see the home page,
 then log in, then gain access to the main components of the site. From these components, they can create
 incidents, view details about and add tasks to specific incidents, and view statistics to identify trends
@@ -359,9 +362,8 @@ Responsibility: This component is responsible for presenting statistical informa
 created incidents, offering insights into system performance or relevant metrics.
 ●
 Significant Decisions: Used Chart JS
-10
 
-![Page 10 Image 1](img/page10_1.jpeg)
+
 
 4. Create Incident:
 ●
