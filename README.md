@@ -1,7 +1,7 @@
 ### Fall 2023
 ### Final Report
 ### CyberTRIP
-
+[Jump to picture description](#Context-Diagram)
 
 ## Introduction
 CyberTRIP, short for Cyber Triage & Response Incident Platform, is a comprehensive web-based
@@ -318,7 +318,7 @@ website is not vulnerable to SQL injection because MongoDB is a NoSQL dbms. The 
 separate normal and super users also affected the system because data had to be partitioned based on
 the permissions of the user.
 
-Context Diagram
+## Context Diagram
 
 ![Page 9 Image 1](img/page9_1.jpeg)
 
