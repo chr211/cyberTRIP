@@ -405,6 +405,7 @@ Creating an Incident
 ![Page 13 Image 1](img/page13_1.png)
 Url Scan API
 ![Page 13 Image 2](img/page13_2.png)
+
 Viewing existing incidents
 ![Page 13 Image 3](img/page13_3.png)
 
@@ -414,16 +415,24 @@ Search Incidents
 Delete Incidents
 ![Page 14 Image 2](img/page14_2.png)
 
-Add tasks
+
+View Individual Incidents
 ![Page 15 Image 1](img/page15_1.png)
 
-Edit Tasks
+Add Tasks
 ![Page 15 Image 2](img/page15_2.png)
 
-Viewing statistics
+Edit Tasks
 ![Page 15 Image 3](img/page15_3.png)
 
+Viewing statistics
+![Page 16 Image 1](img/page16_1.png)
+
 Logout
+![Page 16 Image 2](img/page16_2.png)
+
+
+
 Architectural View
 From the architectural view, the data from Create Incident is saving to the MongoDB. View Statistics
 and View Incidents is correctly retrieving data from MongoDB. The External APIs are correctly
@@ -436,18 +445,12 @@ once.
 
 Lines of Code Written
 
-16
-15
-View Individual Incidents
-![Page 16 Image 1](img/page16_1.png)
-
-![Page 16 Image 2](img/page16_2.png)
-
-1722 html files
-866 css files
-775 python
-3363 lines guaranteed. Possibly closer to 3500 with other files needed to deploy the website in
+1722 lines in html files
+866 lines in css files
+775 lines in python
+3363 lines total. Possibly closer to 3500 with other files needed to deploy the website in
 production on the EC2 instance.
+
 5. Teamwork
 At the beginning stages of this project we were operating with a very loose process model and
 workflows and essentially just decided on general work items then worked towards completing them for
@@ -458,38 +461,7 @@ code with one another’s. We also continued to meet weekly on Thursdays from 12
 would discuss the work that has been completed, the work in progress, and the tasks that need to be
 completed. We also continued to utilize our GitHub repository as a means of sharing and merging code,
 and a Discord group chat as our primary means of communication.
-The roles of each team member for this iteration were as follows: Chris – Product Owner &
-Backend Developer, Logan – Backend Developer, Cooper – Scrum Master & Frontend Developer, and
-Katelen – Frontend Developer. In the first iteration, Chris was vital in developing work items and the
-foundation of the entire project. He developed a working backend prototype for the essential functions of
-the web application (login/logout, creating users, connecting to database, submitting incidents, viewing
-incidents, and implementing a preliminary cybersecurity API). In the second iteration, Chris’s
-contribution was the implementation of a feature that allows analysts to create items, or “tasks”, detailing
-what is being done for a particular case as well as other notes. This feature was also useful for users to
-see what is being done to resolve an issue/case. Chris also worked to update previously implemented
-features with new functionality, such as adding a timer to the URL scanner to wait until results are ready
-and then redirect, and creating links in incident reports that can be clicked on and automatically run the
-URL scanner. Since the end of the second iteration, he has continued to update features by making tasks
-editable, and storing deleted incidents in a temporary delete space where they can be recovered.
-Throughout the course of the project, Logan has assisted in the development of all backend
-functionality, and also has been integral to creating and maintaining the documentation (i.e. worklogs,
-meeting notes, documentation of contributions, etc.) necessary to remain organized not only as a team,
-but as developers. He is also the person responsible for hosting our web application on an AWS system
-with its own domain name, and has been the primary developer maintaining and updating the live web
-application by integrating new features to the application on the AWS system and debugging issues that
-have arisen while hosting the web application.
-17
 
-Cooper and Katelen have worked on the front end of the web application by developing integral
-aspects of the user interface (e.g. a page to view and filter through incident reports, a user dashboard, a
-home page, etc.), organizing any existing backend material, arranging the web application to provide an
-intuitive user experience, and ensuring that the front and backend of the web application work together
-seamlessly. It has been their primary job to ensure the uniformity and consistency of the application,
-while also making the data provided on the site easily readable.
-Overall, with this arrangement, the amount of work each team member contributed was roughly:
-Chris - 28%, Cooper - 24%, Logan - 26%, and Katelen - 22%. The tasks and responsibilities were
-distributed in a way that allowed our team to use individual strengths and skills effectively while
-maintaining a collaborative approach to our project's challenges.
 6. Project Management
 Top 5 Items from the Change Log
 One of our bigger decisions centered around the different user types. Though we ran out of time to
@@ -498,6 +470,7 @@ discussing how the different user types should work, what the different user typ
 permissions, etc. We ended up with three different kinds of users: superuser which had all power and
 permissions in the website, Supervisors which would manage incidents and tasks, and standard users
 which could view their associated incidents and their status.
+
 Another decision was how we would scale the website with the database. We were able to use
 MongoDB locally when testing the website locally and we got it running locally on the website
 server to allow basic functionality for the website. We discussed trying to make MongoDB Atlas
@@ -506,8 +479,9 @@ version on the server. However, given time and work constraints, we decided to l
 using the local version instead of attempting to get it to work with Atlas.
 One major event was figuring out the best way to store the API key for the URL Scanner. There
 wasn’t much discussion about what the best way should be but more determine what ways it could be
-done safely. Chris eventually settled on saving it as an environment variable that would have to be
+done safely. We eventually settled on saving it as an environment variable that would have to be
 stored on the server.
+
 One change we decided to add later in the project was adding tasks to incidents. It seemed intuitive
 and useful so there wasn’t much debate on whether or not we would do it, just what the best way
 would be to add it. We ended up deciding that the Tasks would only be viewable when the associated
@@ -518,6 +492,7 @@ Another smaller change that we all agreed on was adding a label displaying what 
 It was a simple few lines of code that improved the user experience by allowing the user to confirm
 what account they were logged in as and that they were viewing the correct incidents associated with
 the account.
+
 7. Reflection and Continuous Improvement
 What went well?
 In the first iteration of our project, we were able to create several working prototypes that matched the
